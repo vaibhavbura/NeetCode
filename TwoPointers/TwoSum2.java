@@ -6,8 +6,6 @@
 
 // Your solution must use only constant extra space.
 
- 
-
 // Example 1:
 
 // Input: numbers = [2,7,11,15], target = 9
@@ -27,30 +25,31 @@ package TwoPointers;
 
 public class TwoSum2 {
 
-    public static int[] two(int arr[],int target){
+    public static int[] two(int arr[], int target) {
         int n = arr.length;
-        int i=0;
-        int j = n-1;
-        while (i<j) {
-            if (arr[i]+arr[j]>target) {
+        int i = 0;
+        int j = n - 1;
+        while (i < j) {
+            int sum = arr[i] + arr[j];
+            if (sum == target) {
+                return new int[] { i + 1, j + 1 };
+            } else if (sum > target) {
                 j--;
-            }
-            if (arr[i]+arr[j]<target) {
+            } else {
                 i++;
             }
-            if (arr[i]+arr[j]==target) {
-                return new int[]{i+1,j+1};
-            }
+
         }
-        return new int[]{-1,-1};
+        return new int[] { -1, -1 };
     }
+
     public static void main(String[] args) {
 
-        int[] numbers={2,7,11,15};
+        int[] numbers = { 2, 7, 11, 15 };
         int ans[] = two(numbers, 10);
         for (int i : ans) {
             System.out.print(i);
         }
-        
+
     }
 }
